@@ -1,0 +1,2 @@
+class ShowroomAssociate < User
+end

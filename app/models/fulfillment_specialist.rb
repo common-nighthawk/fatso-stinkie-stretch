@@ -1,0 +1,2 @@
+class FulfillmentSpecialist < User
+end

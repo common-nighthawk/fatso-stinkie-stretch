@@ -1,0 +1,2 @@
+class CustomerExperienceSpecialist < User
+end

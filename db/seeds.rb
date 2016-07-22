@@ -21,9 +21,9 @@ Inventory.create!(product: pillow, warehouse: detroit)
   Shipment.create!(warehouse: detroit, expected_departure_date: expected, actual_departure_date: actual)
 end
 
-User.create!(name: 'Alice', email: 'alice@example.com')
-User.create!(name: 'Bob', email: 'bob@example.com')
-User.create!(name: 'Carl', email: 'carl@example.com')
+User.create!(name: 'Alice', email: 'alice@example.com', type: 'FulfillmentSpecialist')
+User.create!(name: 'Bob', email: 'bob@example.com', type: 'FulfillmentSpecialist')
+User.create!(name: 'Carl', email: 'carl@example.com', type: 'FulfillmentSpecialist')
 
 InventoryShipmentAssignment.create(inventory: Inventory.first, shipment: Shipment.first, user: User.first)
 InventoryShipmentAssignment.create(inventory: Inventory.second, shipment: Shipment.first, user: User.first)
