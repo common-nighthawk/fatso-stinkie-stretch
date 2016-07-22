@@ -8,6 +8,7 @@ gem 'bootstrap-sass'
 gem 'bcrypt'
 gem 'coffee-rails'
 gem 'sass-rails'
+gem 'sprockets', '3.6.3'
 gem 'turbolinks'
 gem 'uglifier'
 
