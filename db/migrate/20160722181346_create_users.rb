@@ -4,8 +4,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :name
       t.string :email
       t.string :type
-      t.integer :locationable_id
-      t.integer :locationable_type
+      t.integer :location_id
+      t.string :location_type
 
       t.timestamps null: false
     end

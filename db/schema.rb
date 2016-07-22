@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160722182056) do
+ActiveRecord::Schema.define(version: 20160722205324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,13 @@ ActiveRecord::Schema.define(version: 20160722182056) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "retails", force: :cascade do |t|
+    t.string   "name"
+    t.boolean  "wheelchair_accessible"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
   create_table "shipments", force: :cascade do |t|
     t.integer  "warehouse_id"
     t.date     "expected_departure_date"
@@ -50,16 +57,17 @@ ActiveRecord::Schema.define(version: 20160722182056) do
     t.string   "name"
     t.string   "email"
     t.string   "type"
-    t.integer  "locationable_id"
-    t.integer  "locationable_type"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.integer  "location_id"
+    t.string   "location_type"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "warehouses", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "loading_docks"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
 end
