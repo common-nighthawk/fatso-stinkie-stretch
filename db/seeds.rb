@@ -2,9 +2,9 @@ mattress = Product.create!(name: 'mattress', description: 'Springy latex and hig
 sheets = Product.create!(name: 'sheets', description: 'Impossibly soft, crisp, and airy, our sheets are designed with some of the finest cotton fibers in the world')
 pillow = Product.create!(name: 'pillow', description: 'Our responsive, dual-layer pillow is engineered to stay supportive, cool, and comfortable throughout the night — regardless of your sleeping movements')
 
-pheonix = Warehouse.create!(name: 'Phoenix', loading_docks: 10)
-detroit = Warehouse.create!(name: 'Detroit', loading_docks: 8)
-store = RetailStore.create!(name: 'Nap Tour', wheelchair_accessible: true)
+pheonix = Warehouse.create!(name: 'phoenix', loading_docks: 10)
+detroit = Warehouse.create!(name: 'detroit', loading_docks: 8)
+store = RetailStore.create!(name: 'nap tour', wheelchair_accessible: true)
 
 Inventory.create!(product: mattress, warehouse: pheonix)
 Inventory.create!(product: mattress, warehouse: pheonix)
