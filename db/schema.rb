@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20160722205324) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "retails", force: :cascade do |t|
+  create_table "retail_stores", force: :cascade do |t|
     t.string   "name"
     t.boolean  "wheelchair_accessible"
     t.datetime "created_at",            null: false

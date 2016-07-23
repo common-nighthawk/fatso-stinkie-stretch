@@ -4,7 +4,7 @@ pillow = Product.create!(name: 'pillow', description: 'Our responsive, dual-laye
 
 pheonix = Warehouse.create!(name: 'Phoenix', loading_docks: 10)
 detroit = Warehouse.create!(name: 'Detroit', loading_docks: 8)
-retail = Retail.create!(name: 'Nap Tour', wheelchair_accessible: true)
+store = RetailStore.create!(name: 'Nap Tour', wheelchair_accessible: true)
 
 Inventory.create!(product: mattress, warehouse: pheonix)
 Inventory.create!(product: mattress, warehouse: pheonix)
@@ -25,7 +25,7 @@ end
 User.create!(name: 'Alice', email: 'alice@example.com', type: 'FulfillmentSpecialist', location: pheonix)
 User.create!(name: 'Bob', email: 'bob@example.com', type: 'FulfillmentSpecialist', location: pheonix)
 User.create!(name: 'Carl', email: 'carl@example.com', type: 'FulfillmentSpecialist', location: detroit)
-User.create!(name: 'Sally', email: 'sally@example.com', type: 'FulfillmentSpecialist', location: retail)
+User.create!(name: 'Sally', email: 'sally@example.com', type: 'FulfillmentSpecialist', location: store)
 
 InventoryShipmentAssignment.create(inventory: Inventory.first, shipment: Shipment.first, user: User.first)
 InventoryShipmentAssignment.create(inventory: Inventory.second, shipment: Shipment.first, user: User.first)

@@ -1,6 +1,6 @@
-class CreateRetails < ActiveRecord::Migration
+class CreateRetailStores < ActiveRecord::Migration
   def change
-    create_table :retails do |t|
+    create_table :retail_stores do |t|
       t.string :name
       t.boolean :wheelchair_accessible
 
