@@ -7,8 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <nav class="row">
+    <div class="col-xs-6 col-xs-offset-6">
+      <%= "logged in as: #{@current_user.email}" %>
+    </div>
+  </nav>
+  <%= yield %>
 </body>
 </html>
