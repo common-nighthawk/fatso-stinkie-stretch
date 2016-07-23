@@ -7,6 +7,8 @@ gem 'unicorn'
 gem 'bootstrap-sass'
 gem 'bcrypt'
 gem 'coffee-rails'
+gem 'haml-rails'
+gem 'jquery-rails'
 gem 'sass-rails'
 gem 'sprockets', '3.6.3'
 gem 'turbolinks'
@@ -20,6 +22,8 @@ group :development, :test do
 end
 
 group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'spring'
 end
 
