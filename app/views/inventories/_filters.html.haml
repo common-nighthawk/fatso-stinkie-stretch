@@ -4,8 +4,8 @@
     =link_to 'Not Shipped', inventories_path('shipped': 'not_shipped', 'warehouse': params[:warehouse]), class: btn_classes(:shipped, 'not_shipped')
     =link_to 'All', inventories_path(warehouse: params[:warehouse]), class: 'btn btn-default', class: btn_classes(:shipped)
   .col-xs-4
-    =link_to 'Phoenix', inventories_path('warehouse': 'phoenix', 'shipped': params[:shipped]), class: btn_classes(:warehouse, 'phoenix')
-    =link_to 'Detroit', inventories_path('warehouse': 'detroit', 'shipped': params[:shipped]), class: btn_classes(:warehouse, 'detroit')
+    - Warehouse.pluck(:name).each do |warehouse|
+      =link_to warehouse.titleize, inventories_path('warehouse': warehouse, 'shipped': params[:shipped]), class: btn_classes(:warehouse, warehouse)
     =link_to 'All', inventories_path('shipped': params[:shipped]), class: btn_classes(:warehouse)
   .col-xs-4
     =link_to 'Clear Filters', inventories_path, class: btn_classes
