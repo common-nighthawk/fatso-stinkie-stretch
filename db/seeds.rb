@@ -15,7 +15,7 @@ Inventory.create!(product: sheets, warehouse: pheonix)
 Inventory.create!(product: sheets, warehouse: detroit)
 Inventory.create!(product: pillow, warehouse: detroit)
 
-((Date.today - 10)..(Date.today + 10)).each do |date|
+((Date.today - 30)..(Date.today + 30)).each do |date|
   expected = date
   actual = date unless date.future?
   Shipment.create!(warehouse: pheonix, expected_departure_date: expected, actual_departure_date: actual)

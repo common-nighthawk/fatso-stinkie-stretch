@@ -1,11 +1,11 @@
 .row
   .col-xs-5.col-xs-offset-1
-    %h4= "Inventory ##{inventory.id}"
+    %h4= "Inventory ID ##{inventory.id}"
     %h5= "is a #{inventory.product.name}"
     %h5= "is held at #{inventory.warehouse.name}"
   .col-xs-5.col-xs-offset-1
     =form_for [inventory, inventory.guarenteed_assignment] do |f|
       - shipments = Shipment.possible_for(inventory)
-      =f.select :shipment_id, options_for_select(shipment_select_opts(shipments), inventory.guarenteed_shipment.id)
+      =f.select :shipment_id, options_for_select(shipment_select_opts(shipments), inventory.guarenteed_shipment.id), include_blank: inventory.shipment
       =f.submit class: 'btn btn-success'
 %hr

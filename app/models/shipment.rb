@@ -13,6 +13,8 @@ class Shipment < ActiveRecord::Base
   end
 
   def self.possible_for(inventory)
-    not_shipped.departing_from(inventory.warehouse)
+    shipments = not_shipped.departing_from(inventory.warehouse)
+    shipments << inventory.guarenteed_shipment
+    shipments.sort_by(&:expected_departure_date)
   end
 end
