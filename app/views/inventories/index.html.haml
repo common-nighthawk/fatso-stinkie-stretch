@@ -1,3 +1,6 @@
-= render 'filters'
-- @inventories.each do |inventory|
-  = render inventory
+.inventory-filters
+  = render 'filters'
+.inventory-cards
+  - @inventories.each do |inventory|
+    .inventory-card
+      = render inventory
