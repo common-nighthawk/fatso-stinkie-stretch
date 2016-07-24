@@ -4,6 +4,10 @@ class Shipment < ActiveRecord::Base
   scope :departing_from, -> (warehouse) { where(warehouse: warehouse) }
   scope :not_shipped, -> { where(actual_departure_date: nil) }
 
+  validates :expected_departure_date, presence: true
+  validates :warehouse, presence: true
+  validates :expected_departure_date, uniqueness: { scope: :warehouse_id }
+
   def description
     "#{expected_departure_date} from #{warehouse.name}"
   end

@@ -5,6 +5,9 @@ class Inventory < ActiveRecord::Base
   has_one :shipment, through: :assignment
   has_one :shipper, through: :assignment
 
+  validates :product, presence: true
+  validates :warehouse, presence: true
+
   scope :shipped, -> { includes(:shipment).where.not(shipments: { actual_departure_date: nil } ) }
   scope :not_shipped, -> { includes(:shipment).where(shipments: { actual_departure_date: nil } ) }
 

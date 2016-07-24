@@ -9,16 +9,24 @@ RSpec.describe Inventory, type: :model do
     it { is_expected.to have_one(:shipper) }
   end
 
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:product) }
+    it { is_expected.to validate_presence_of(:warehouse) }
+  end
+
   describe 'scopes' do
-    let(:shipment_shipped) { Shipment.create(actual_departure_date: Date.today - 1) }
-    let(:shipment_to_be_shipped) { Shipment.create(actual_departure_date: nil) }
+    let(:warehouse) { Warehouse.create!(name: 'chicago') }
+    let(:product) { Product.create!(name: 'blanket') }
+    let(:shipper) { FulfillmentSpecialist.create!(email: 'mike@example.com', name: 'mike', location: warehouse) }
+    let(:shipment_shipped) { Shipment.create!(actual_departure_date: Date.today - 1, warehouse: warehouse, expected_departure_date: Date.today) }
+    let(:shipment_to_be_shipped) { Shipment.create!(actual_departure_date: nil, warehouse: warehouse, expected_departure_date: Date.today + 1) }
 
     before do
-      @item_shipped = Inventory.create!
-      @item_to_be_shipped = Inventory.create!
-      @item_without_shippment = Inventory.create!
-      InventoryShipmentAssignment.create!(inventory: @item_shipped, shipment: shipment_shipped)
-      InventoryShipmentAssignment.create!(inventory: @item_to_be_shipped, shipment: shipment_to_be_shipped)
+      @item_shipped = Inventory.create!(product: product, warehouse: warehouse)
+      @item_to_be_shipped = Inventory.create!(product: product, warehouse: warehouse)
+      @item_without_shippment = Inventory.create!(product: product, warehouse: warehouse)
+      InventoryShipmentAssignment.create!(inventory: @item_shipped, shipment: shipment_shipped, shipper: shipper)
+      InventoryShipmentAssignment.create!(inventory: @item_to_be_shipped, shipment: shipment_to_be_shipped, shipper: shipper)
     end
 
     context '#shipped' do
