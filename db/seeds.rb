@@ -14,6 +14,16 @@ Inventory.create!(product: sheets, warehouse: pheonix)
 Inventory.create!(product: sheets, warehouse: pheonix)
 Inventory.create!(product: sheets, warehouse: detroit)
 Inventory.create!(product: pillow, warehouse: detroit)
+Inventory.create!(product: pillow, warehouse: detroit)
+Inventory.create!(product: pillow, warehouse: detroit)
+Inventory.create!(product: pillow, warehouse: detroit)
+Inventory.create!(product: pillow, warehouse: detroit)
+Inventory.create!(product: mattress, warehouse: detroit)
+Inventory.create!(product: pillow, warehouse: detroit)
+Inventory.create!(product: pillow, warehouse: detroit)
+Inventory.create!(product: mattress, warehouse: detroit)
+Inventory.create!(product: pillow, warehouse: detroit)
+Inventory.create!(product: pillow, warehouse: detroit)
 
 ((Date.today - 30)..(Date.today + 30)).each do |date|
   expected = date
@@ -27,6 +37,6 @@ User.create!(name: 'Bob', email: 'bob@example.com', type: 'FulfillmentSpecialist
 User.create!(name: 'Carl', email: 'carl@example.com', type: 'FulfillmentSpecialist', location: detroit)
 User.create!(name: 'Sally', email: 'sally@example.com', type: 'FulfillmentSpecialist', location: store)
 
-InventoryShipmentAssignment.create(inventory: Inventory.first, shipment: Shipment.first, user: User.first)
-InventoryShipmentAssignment.create(inventory: Inventory.second, shipment: Shipment.first, user: User.first)
-InventoryShipmentAssignment.create(inventory: Inventory.third, shipment: Shipment.second, user: User.first)
+InventoryShipmentAssignment.create(inventory: Inventory.first, shipment: Shipment.first, shipper: User.first)
+InventoryShipmentAssignment.create(inventory: Inventory.second, shipment: Shipment.first, shipper: User.first)
+InventoryShipmentAssignment.create(inventory: Inventory.third, shipment: Shipment.second, shipper: User.second)

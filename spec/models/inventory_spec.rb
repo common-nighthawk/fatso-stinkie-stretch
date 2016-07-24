@@ -4,13 +4,16 @@ RSpec.describe Inventory, type: :model do
   describe 'associations' do
     it { is_expected.to belong_to(:product) }
     it { is_expected.to belong_to(:warehouse) }
-    it { is_expected.to have_one(:inventory_shipment_assignment) }
+    it { is_expected.to have_one(:assignment) }
+    it { is_expected.to have_one(:shipment) }
+    it { is_expected.to have_one(:shipper) }
   end
 
   describe 'scopes' do
+    let(:shipment_shipped) { Shipment.create(actual_departure_date: Date.today - 1) }
+    let(:shipment_to_be_shipped) { Shipment.create(actual_departure_date: nil) }
+
     before do
-      shipment_shipped = Shipment.create(actual_departure_date: Date.today - 1)
-      shipment_to_be_shipped = Shipment.create(actual_departure_date: nil)
       @item_shipped = Inventory.create!
       @item_to_be_shipped = Inventory.create!
       @item_without_shippment = Inventory.create!

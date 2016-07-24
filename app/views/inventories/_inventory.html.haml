@@ -3,6 +3,7 @@
     %h4= "Inventory ID ##{inventory.id}"
     %h5= "is a #{inventory.product.name}"
     %h5= "is held at #{inventory.warehouse.name}"
+    %h5= "was assigned by #{inventory.shipper.name}" if inventory.shipper
   .col-xs-5.col-xs-offset-1
     =form_for [inventory, inventory.guarenteed_assignment] do |f|
       - shipments = Shipment.possible_for(inventory)

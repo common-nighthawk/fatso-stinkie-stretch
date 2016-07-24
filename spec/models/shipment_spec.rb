@@ -6,6 +6,15 @@ RSpec.describe Shipment, type: :model do
   end
 
   describe 'public instance methods' do
+    context '#description' do
+      let(:warehouse) { Warehouse.create(name: 'chicago') }
+
+      it 'returns the expected_departure_date from the warehouse name' do
+        shipment = Shipment.create!(expected_departure_date: '2016-01-01', warehouse: warehouse)
+        expect(shipment.description).to eq('2016-01-01 from chicago')
+      end
+    end
+
     context '#shipped?' do
       it 'returns true when actual_departure_date is present' do
         shipment = Shipment.create!(actual_departure_date: Date.today)
